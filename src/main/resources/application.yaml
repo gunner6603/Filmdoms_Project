@@ -1,7 +1,4 @@
 spring:
-  profiles:
-    active: local
-
   jpa:
     defer-datasource-initialization: true
     show-sql: true
@@ -10,7 +7,6 @@ spring:
         format_sql: true
         default_batch_fetch_size: 100
     open-in-view: false
-
 
 jwt:
   secret-key: ${JWT_KEY}
