@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
                 // Origin이 http:localhost:3000에 대해
-                .allowedOrigins("http://localhost:3000", "http://film-doms.vercel.app:80")
+                .allowedOrigins("http://localhost:3000", "http://film-doms.vercel.app:80", "http://localhost:3030")
                 // GET, POST, PUT, PATCH, DELETE, OPTIONS 메서드를 허용한다.
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowCredentials(true)
