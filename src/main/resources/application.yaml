@@ -101,6 +101,10 @@ spring:
             client-secret: ${OAUTH_GOOGLE_CLIENT_SECRET}
             scope: email
             redirect-uri: "{baseUrl}/front/oauth2/google"
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
 
 cloud:
   aws:
