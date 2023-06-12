@@ -1,0 +1,74 @@
+name: Deploy to cloudtype
+on:
+  push:
+    branches:
+      - cloudtype-dev-server
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Connect deploy key
+        uses: cloudtype-github-actions/connect@v1
+        with:
+          token: ${{ secrets.CLOUDTYPE_TOKEN }}
+          ghtoken: ${{ secrets.GHP_TOKEN }}
+      - name: Deploy
+        uses: cloudtype-github-actions/deploy@v1
+        with:
+          token: ${{ secrets.CLOUDTYPE_TOKEN }}
+          project: gunner6603/filmdoms
+          stage: main
+          yaml: >
+            name: filmdoms-project-2
+
+            app: java@17
+
+            options:
+              ports: 8080
+              env:
+                - name: AWS_ACCESS_KEY_ID
+                  secret: AWS_ACCESS_KEY_ID
+                - name: AWS_SECRET_ACCESS_KEY
+                  secret: AWS_SECRET_ACCESS_KEY
+                - name: BUCKET_NAME
+                  secret: BUCKET_NAME
+                - name: DB_HOST
+                  value: svc.sel4.cloudtype.app
+                - name: DB_PASSWORD
+                  secret: mariadb-user-password
+                - name: DB_PORT
+                  value: "30489"
+                - name: DB_USERNAME
+                  value: admin
+                - name: JWT_KEY
+                  secret: JWT_KEY
+                - name: spring_profiles_active
+                  value: dev
+                - name: DOMAIN
+                  secret: image-server-domain
+                - name: GMAIL_ADDRESS
+                  secret: GMAIL_ADDRESS
+                - name: GMAIL_PASSWORD
+                  secret: GMAIL_PASSWORD
+                - name: OAUTH_GOOGLE_CLIENT_ID
+                  secret: OAUTH_GOOGLE_CLIENT_ID
+                - name: OAUTH_GOOGLE_CLIENT_SECRET
+                  secret: OAUTH_GOOGLE_CLIENT_SECRET
+                - name: OAUTH_GOOGLE_REDIRECT_URI
+                  value: http://localhost:3000/auth/google
+                - name: SPRING_CONFIG_ADDITIONAL_LOCATION
+                  value: classpath:config/mail/,classpath:config/oauth/,classpath:config/redis/,classpath:config/s3/
+                - name: ADMIN
+                  secret: admin-password
+                - name: REDIS_HOST
+                  value: svc.sel4.cloudtype.app
+                - name: REDIS_PORT
+                  value: "32383"
+                - name: REDIS_SECRET
+                  secret: redis-password
+            context:
+              git:
+                url: git@github.com:${{ github.repository }}.git
+                ref: ${{ github.ref }}
