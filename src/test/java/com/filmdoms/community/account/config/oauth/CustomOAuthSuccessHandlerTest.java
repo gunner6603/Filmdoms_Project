@@ -11,6 +11,7 @@ import com.filmdoms.community.account.repository.AccountRepository;
 import com.filmdoms.community.account.repository.RefreshTokenRepository;
 import com.filmdoms.community.account.service.TokenAuthenticationService;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,6 +38,7 @@ import static org.mockito.Mockito.*;
         "JWT_KEY=aKeyThatIsVeryLongToBeUsedForJWTKEY"
 })
 @DisplayName("소셜 로그인 로직 테스트")
+@Tag("requiresEnvironmentVariables")
 class CustomOAuthSuccessHandlerTest {
 
     @SpyBean

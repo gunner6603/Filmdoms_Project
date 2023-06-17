@@ -10,6 +10,7 @@ import com.filmdoms.community.file.data.dto.response.FileResponseDto;
 import com.filmdoms.community.file.data.entity.File;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -34,6 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Import(TestSecurityConfig.class)
 @ActiveProfiles("test")
 @DisplayName("컨트롤러 - 배너 서비스")
+@Tag("requiresEnvironmentVariables")
 class BannerControllerTest {
 
     @Autowired

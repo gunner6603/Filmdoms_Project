@@ -6,6 +6,7 @@ import com.filmdoms.community.config.TestSecurityConfig;
 import com.filmdoms.community.vote.data.dto.VoteResponseDto;
 import com.filmdoms.community.vote.service.VoteService;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -28,6 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Import(TestSecurityConfig.class)
 @ActiveProfiles("test")
 @DisplayName("컨트롤러 - 추천 기능")
+@Tag("requiresEnvironmentVariables")
 class VoteControllerTest {
     @Autowired
     private MockMvc mockMvc;

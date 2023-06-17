@@ -15,6 +15,7 @@ import java.util.List;
 
 import jakarta.servlet.http.Cookie;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                 @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)})
 @ActiveProfiles("test")
 @DisplayName("컨트롤러 - 회원 서비스")
+@Tag("requiresEnvironmentVariables")
 public class AccountControllerTest {
 
     @Autowired
