@@ -42,10 +42,12 @@ dependencies {
 	implementation "com.amazonaws:aws-java-sdk-s3:1.12.281"
 	implementation 'javax.xml.bind:jaxb-api:2.3.0'
 // RequestDto 를 검증하는 Validation
-	implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.6'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+	useJUnitPlatform {
+		excludeTags 'requiresEnvironmentVariables'
+	}
 }
